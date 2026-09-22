@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-serif: "Playfair Display", Georgia, serif;
+    --font-sans: "Inter", system-ui, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-brass-200 text-ink;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-6 md:px-8;
+  }
+
+  .eyebrow {
+    @apply inline-block text-xs font-semibold uppercase tracking-widest2 text-brass-600;
+  }
+
+  .section-title {
+    @apply font-serif text-3xl leading-tight text-ink md:text-4xl lg:text-[2.75rem];
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-semibold tracking-wide transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-brass-400 focus-visible:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply btn bg-forest-700 text-cream shadow-card hover:-translate-y-0.5 hover:bg-forest-600;
+  }
+
+  .btn-secondary {
+    @apply btn border border-forest-700/25 bg-transparent text-forest-800 hover:border-forest-700/50 hover:bg-forest-50;
+  }
+
+  .btn-brass {
+    @apply btn bg-brass-400 text-ink shadow-card hover:-translate-y-0.5 hover:bg-brass-300;
+  }
+}
+
+/* Scroll-reveal animation utility (paired with the Reveal component). */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
